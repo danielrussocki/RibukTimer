@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Cronómetro</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<!-- <div id="cronometro">
+		<div class="container">
+			<div id="minutos">00</div>
+			<div>:</div>
+			<div id="segundos">00</div>
+			<div>:</div>
+			<div id="milisegundos">00</div>                
+		</div>
+		<button id="btn-crono">Comenzar</button>
+	</div> -->
+<body class="text-center">
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+	  <header class="masthead mb-auto">
+	    <div class="inner">
+	      <h3 class="masthead-brand">Timer.dan</h3>
+	      <nav class="nav nav-masthead justify-content-center">
+	        <a class="nav-link active" href="#">Cronómetro</a>
+	        <a class="nav-link" href="#">Donaciones</a>
+	        <a class="nav-link" href="#">Contacto</a>
+	      </nav>
+	    </div>
+	  </header>
+	  <main role="main" class="inner cover">
+	  	<p class="lead" id="scramble"></p>
+	    <div class="h1 h-icon timer-cont">
+	    	<!-- <i class="far fa-hand-paper" id="handLeft"></i> -->
+	    	<div id="cronometro" class="mx-1">
+	    		<div id="minutos">00</div>
+	    		<div class="two-dots">:</div>
+	    		<div id="segundos">00</div>
+	    		<div class="two-dots">:</div>
+	    		<div id="milisegundos">00</div>
+	    	</div>
+	    	<!-- <i class="far fa-hand-paper"></i> -->
+	    </div>
+	    <div class="mastfoot mt-auto inner">Presiona la <b class="text-light">barra espaciadora</b> para <b class="text-light">iniciar</b>. Presiona cualquier <b class="text-light">otra tecla</b> para <b class="text-light">detener</b>.</div>
+	    <p class="lead" id="rubikImg"></p>
+	    <p class="lead">
+	      <!-- <div class="btn btn-lg btn-secondary" id="#btn_crono">Presiona espacio para comenzar</div> -->
+	    </p>
+	  </main>
+
+	  <footer class="mastfoot mt-auto">
+	    <div class="inner">
+	      <p>Versión 1.0.0. <a href="https://github.com/danielrussocki">Github</a>, creado por <a href="https://www.facebook.com/dan.russocki">Daniel Rojas</a>.</p>
+	    </div>
+	  </footer>
+	</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="js/anime.min.js"></script>
+<script src="js/crono.js"></script>
+<script>
+	$(document).ready(function(){
+		scramble();
+		$(document).keydown(verTecla);
+	});
+	function verTecla(e){
+		switch(e.keyCode){
+			case 32:
+			break;
+			default:
+			scramble();
+			break;
+		}
+	}
+	function scramble(){
+		let obj = {
+			"accion":"scramble"
+		};
+		$.post("includes/_funciones.php",obj,function(e){
+			console.log(e);
+			$("#scramble").html(e);
+		});
+	}
+	// function imprimir(){
+	// 	let obj={
+	// 		"accion":"imprimir"
+	// 	};
+	// 	$.post("includes/_funciones.php",obj,function(e){
+	// 		console.log(e);
+	// 		$("#rubikImg").html(e);
+	// 	});
+	// }
+	
+</script>
+</body>
+</html>
